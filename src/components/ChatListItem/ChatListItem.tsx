@@ -13,7 +13,7 @@ export function ChatListItem(props: ChatListItemProps) {
     <button
       onClick={props.onClick}
       type="button"
-      className="flex items-center gap-3 px-4 h-[72px] bg-white hover:bg-slate-50 focus:bg-slate-50 focus:outline-none text-left"
+      className="shrink-0 flex items-center gap-3 px-4 h-[72px] bg-white hover:bg-slate-50 focus:bg-slate-50 focus:outline-none text-left"
     >
       <img
         className="shrink-0 w-12 h-12 rounded-full object-cover"

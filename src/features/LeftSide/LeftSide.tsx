@@ -32,7 +32,7 @@ export function LeftSide(props: LeftSideProps) {
         <ChatHeader currentUser={props.currentUser} />
         <ChatSearch onSearch={handleSearch} />
       </div>
-      <div className="h-full overflow-auto flex flex-col bg-white">
+      <div className="h-full overflow-auto flex flex-col bg-white pb-10">
         {users.map((user) => {
           const chat = props.chats.find((chat) =>
             chat.authors.includes(user.id)
@@ -51,7 +51,7 @@ export function LeftSide(props: LeftSideProps) {
         })}
         <button
           onClick={props.createUserClick}
-          className="w-full mt-2 h-10 text-[#00A884] font-medium text-sm"
+          className="shrink-0 w-full mt-2 h-10 text-[#00A884] font-medium text-sm"
         >
           Add new user in chat
         </button>
