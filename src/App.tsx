@@ -15,16 +15,24 @@ function App() {
     setChat(chats.find((el) => el.receiverId === user.id));
   }
 
+  function sendMessageInChat(message: string): void {
+    console.log("send message in this chat", message);
+  }
+
   return (
     <div className="w-screen h-screen relative">
       <div className="bg-[#00A884] h-[127px] w-full"></div>
       <div className="bg-[#E2E1DE] h-[calc(100vh-127px)]"></div>
-      <div className="absolute top-4 bottom-4 left-1/2 transform -translate-x-1/2 max-w-[1500px] w-full grid grid-cols-12">
-        <div className="col-span-4 border-r border-solid border-slate-100">
+      <div className="absolute top-4 bottom-4 left-1/2 transform -translate-x-1/2 max-w-[1500px] w-full grid grid-cols-12 overflow-hidden">
+        <div className="col-span-4 border-r border-solid border-slate-100 overflow-hidden">
           <LeftSide chats={chats} users={users} userClick={handleUserClick} />
         </div>
-        <div className="col-span-8">
-          <RightSide senderId={currentUser.id} chat={chat} />
+        <div className="col-span-8 overflow-hidden">
+          <RightSide
+            senderId={currentUser.id}
+            chat={chat}
+            onSubmit={sendMessageInChat}
+          />
         </div>
       </div>
     </div>
