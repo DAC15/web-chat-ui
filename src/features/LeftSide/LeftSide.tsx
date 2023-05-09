@@ -5,6 +5,7 @@ import { Chat, User } from "../../models";
 interface LeftSideProps {
   userClick: (user: User) => void;
   userTakeIdentityClick: (user: User) => void;
+  createUserClick: () => void;
   currentUser: User;
   users: User[];
   chats: Chat[];
@@ -48,6 +49,12 @@ export function LeftSide(props: LeftSideProps) {
             />
           );
         })}
+        <button
+          onClick={props.createUserClick}
+          className="w-full mt-2 h-10 text-[#00A884] font-medium text-sm"
+        >
+          Add new user in chat
+        </button>
       </div>
     </div>
   );

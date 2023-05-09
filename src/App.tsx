@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { UsersDataService } from "./data-services";
-import { ChatsDataService } from "./data-services/chats.data-service";
+import { ChatsDataService, UsersDataService } from "./data-services";
 import { LeftSide, RightSide } from "./features";
 import { Chat, User } from "./models";
 import { getChatId } from "./utils";
@@ -27,6 +26,10 @@ function App() {
     const newUsers = [currentUser, ...users].filter((el) => el.id !== user.id);
     setUsers([user, ...newUsers]);
     setChats(ChatsDataService.getChatsBySenderId(user.id));
+  }
+
+  function handleCreateUserClick(): void {
+    setUsers([currentUser, ...users, UsersDataService.getRandomUser()]);
   }
 
   function sendMessageInChat(message: string): void {
@@ -64,6 +67,7 @@ function App() {
           <LeftSide
             currentUser={currentUser}
             chats={chats}
+            createUserClick={handleCreateUserClick}
             users={users}
             userClick={handleUserClick}
             userTakeIdentityClick={handleUserTakeIdentityClick}

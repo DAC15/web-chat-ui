@@ -26,6 +26,7 @@ export function ChatListItem(props: ChatListItemProps) {
         </span>
       </div>
       <SwitchAccessShortcut
+        className="text-slate-500"
         onClick={(event) => {
           event.stopPropagation();
           props.onTakeIdentity();

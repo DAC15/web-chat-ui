@@ -1,6 +1,15 @@
+import { faker } from "@faker-js/faker";
 import { User } from "../models";
 
 export class UsersDataService {
+  public static getRandomUser(): User {
+    return {
+      id: faker.random.alphaNumeric(10),
+      fullName: faker.internet.userName(),
+      imageSrc: faker.internet.avatar(),
+    };
+  }
+
   public static getUsers(): User[] {
     return [
       {
