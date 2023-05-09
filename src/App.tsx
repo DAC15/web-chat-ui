@@ -1,14 +1,18 @@
+import { useState } from "react";
 import { UsersDataService } from "./data-services";
 import { ChatsDataService } from "./data-services/chats.data-service";
 import { LeftSide, RightSide } from "./features";
 import { User } from "./models";
+import { Chat } from "./models/chat";
 
 function App() {
   const [currentUser, ...users] = UsersDataService.getUsers();
   const chats = ChatsDataService.getChatsBySenderId(currentUser.id);
 
+  const [chat, setChat] = useState<Chat | undefined>(undefined);
+
   function handleUserClick(user: User): void {
-    console.log("user was clicked", user);
+    setChat(chats.find((el) => el.receiverId === user.id));
   }
 
   return (
@@ -20,7 +24,7 @@ function App() {
           <LeftSide chats={chats} users={users} userClick={handleUserClick} />
         </div>
         <div className="col-span-8">
-          <RightSide />
+          <RightSide chat={chat} />
         </div>
       </div>
     </div>
