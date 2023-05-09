@@ -1,4 +1,4 @@
-import { WelcomeSection } from "./components";
+import { LeftSide, RightSide } from "./features";
 
 function App() {
   return (
@@ -6,9 +6,11 @@ function App() {
       <div className="bg-[#00A884] h-[127px] w-full"></div>
       <div className="bg-[#E2E1DE] h-[calc(100vh-127px)]"></div>
       <div className="absolute top-4 bottom-4 left-1/2 transform -translate-x-1/2 max-w-[1500px] w-full grid grid-cols-12">
-        <div className="col-span-4">Left side</div>
+        <div className="col-span-4 border-r border-solid border-white">
+          <LeftSide />
+        </div>
         <div className="col-span-8">
-          <WelcomeSection />
+          <RightSide />
         </div>
       </div>
     </div>
