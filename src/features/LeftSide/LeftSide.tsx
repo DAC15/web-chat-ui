@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChatHeader, ChatListItem, ChatSearch } from "../../components";
 import { Chat, User } from "../../models";
 
 interface LeftSideProps {
   userClick: (user: User) => void;
+  userTakeIdentityClick: (user: User) => void;
   currentUser: User;
   users: User[];
   chats: Chat[];
@@ -11,6 +12,10 @@ interface LeftSideProps {
 
 export function LeftSide(props: LeftSideProps) {
   const [users, setUsers] = useState<User[]>(props.users);
+
+  useEffect(() => {
+    setUsers(props.users);
+  }, [props.users]);
 
   function handleSearch(term: string) {
     setUsers(
@@ -27,7 +32,7 @@ export function LeftSide(props: LeftSideProps) {
         <ChatSearch onSearch={handleSearch} />
       </div>
       <div className="h-full overflow-auto flex flex-col bg-white">
-        {users.map((user, idx) => {
+        {users.map((user) => {
           const chat = props.chats.find((chat) =>
             chat.authors.includes(user.id)
           );
@@ -38,7 +43,8 @@ export function LeftSide(props: LeftSideProps) {
               user={user}
               latestMessage={lastMessage || '"Say hi to your contact"'}
               onClick={() => props.userClick(user)}
-              key={idx}
+              onTakeIdentity={() => props.userTakeIdentityClick(user)}
+              key={user.id}
             />
           );
         })}

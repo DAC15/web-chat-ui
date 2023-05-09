@@ -6,7 +6,9 @@ import { Chat, User } from "./models";
 import { getChatId } from "./utils";
 
 function App() {
-  const [currentUser, ...users] = UsersDataService.getUsers();
+  const [[currentUser, ...users], setUsers] = useState<User[]>(
+    UsersDataService.getUsers()
+  );
   const [chats, setChats] = useState<Chat[]>(
     ChatsDataService.getChatsBySenderId(currentUser.id)
   );
@@ -19,6 +21,12 @@ function App() {
       messages: [],
     };
     setChat(clickedChat || newChat);
+  }
+
+  function handleUserTakeIdentityClick(user: User): void {
+    const newUsers = [currentUser, ...users].filter((el) => el.id !== user.id);
+    setUsers([user, ...newUsers]);
+    setChats(ChatsDataService.getChatsBySenderId(user.id));
   }
 
   function sendMessageInChat(message: string): void {
@@ -45,6 +53,8 @@ function App() {
     }
   }
 
+  console.log("render with users", users);
+
   return (
     <div className="w-screen h-screen relative">
       <div className="bg-[#00A884] h-[127px] w-full"></div>
@@ -56,6 +66,7 @@ function App() {
             chats={chats}
             users={users}
             userClick={handleUserClick}
+            userTakeIdentityClick={handleUserTakeIdentityClick}
           />
         </div>
         <div className="col-span-8 overflow-hidden">

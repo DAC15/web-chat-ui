@@ -1,9 +1,11 @@
+import { SwitchAccessShortcut } from "@mui/icons-material";
 import { User } from "../../models";
 
 interface ChatListItemProps {
   user: User;
   latestMessage: string;
   onClick: () => void;
+  onTakeIdentity: () => void;
 }
 
 export function ChatListItem(props: ChatListItemProps) {
@@ -23,6 +25,12 @@ export function ChatListItem(props: ChatListItemProps) {
           {props.latestMessage}
         </span>
       </div>
+      <SwitchAccessShortcut
+        onClick={(event) => {
+          event.stopPropagation();
+          props.onTakeIdentity();
+        }}
+      />
     </button>
   );
 }
