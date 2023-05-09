@@ -12,7 +12,13 @@ function App() {
   const [chat, setChat] = useState<Chat | undefined>(undefined);
 
   function handleUserClick(user: User): void {
-    setChat(chats.find((el) => el.receiverId === user.id));
+    const clickedChat = chats.find((el) => el.receiverId === user.id);
+    const newChat: Chat = {
+      senderId: currentUser.id,
+      receiverId: user.id,
+      messages: [],
+    };
+    setChat(clickedChat || newChat);
   }
 
   function sendMessageInChat(message: string): void {
