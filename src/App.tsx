@@ -1,9 +1,11 @@
 import { UsersDataService } from "./data-services";
+import { ChatsDataService } from "./data-services/chats.data-service";
 import { LeftSide, RightSide } from "./features";
 import { User } from "./models";
 
 function App() {
-  const users = UsersDataService.getUsers();
+  const [currentUser, ...users] = UsersDataService.getUsers();
+  const chats = ChatsDataService.getChatsBySenderId(currentUser.id);
 
   function handleUserClick(user: User): void {
     console.log("user was clicked", user);
@@ -15,7 +17,7 @@ function App() {
       <div className="bg-[#E2E1DE] h-[calc(100vh-127px)]"></div>
       <div className="absolute top-4 bottom-4 left-1/2 transform -translate-x-1/2 max-w-[1500px] w-full grid grid-cols-12">
         <div className="col-span-4 border-r border-solid border-slate-100">
-          <LeftSide users={users} userClick={handleUserClick} />
+          <LeftSide chats={chats} users={users} userClick={handleUserClick} />
         </div>
         <div className="col-span-8">
           <RightSide />

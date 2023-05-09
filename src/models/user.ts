@@ -1,7 +1,5 @@
-import { Chat } from "./chat";
-
 export interface User {
+  id: string;
   imageSrc: string;
   fullName: string;
-  chat?: Chat;
 }

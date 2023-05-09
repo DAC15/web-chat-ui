@@ -2,7 +2,7 @@ import { User } from "../../models";
 
 interface ChatListItemProps {
   user: User;
-  latestMessage?: string;
+  latestMessage: string;
   onClick: () => void;
 }
 
@@ -20,7 +20,7 @@ export function ChatListItem(props: ChatListItemProps) {
       <div className="flex flex-col border-b border-solid border-slate-200 w-full pb-2">
         <h4 className="text-lg text-slate-900">{props.user.fullName}</h4>
         <span className="text-sm text-slate-500 truncate">
-          {props.latestMessage || "Say hi to your contact"}
+          {props.latestMessage}
         </span>
       </div>
     </button>

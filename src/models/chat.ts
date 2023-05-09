@@ -1,12 +1,10 @@
-import { User } from "./user";
-
 export interface Chat {
-  sender?: User;
-  receiver?: User;
+  senderId: string;
+  receiverId: string;
   messages: ChatMessage[];
 }
 
 export interface ChatMessage {
-  author: User;
+  authorId: string;
   message: string;
 }

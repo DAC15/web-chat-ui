@@ -2,33 +2,30 @@ import { User } from "../models";
 
 export class UsersDataService {
   public static getUsers(): User[] {
-    const user: User = {
-      fullName: "Indiana Jones",
-      imageSrc:
-        "https://expertphotography.b-cdn.net/wp-content/uploads/2022/03/Portrait-Photographers-Yousuf-Karsh-King.jpg",
-    };
-
     return [
       {
+        id: "dacian-rusu",
         fullName: "Dacian Rusu",
         imageSrc:
-          "https://mymodernmet.com/wp/wp-content/uploads/2018/10/Mou-Aysha-portrait-photography-3.jpg",
-        chat: {
-          messages: [{ author: user, message: "Hi, how you doing" }],
-        },
+          "https://cdn.mos.cms.futurecdn.net/p5quSf4dZXctG9WFepXFdR.jpg",
       },
       {
+        id: "leonardo-dicaprio",
+        fullName: "Leonardo Dicaprio",
+        imageSrc:
+          "https://hips.hearstapps.com/hmg-prod/images/gettyimages-1197345888.jpg?crop=1xw:0.75xh;center,top&resize=1200:*",
+      },
+      {
+        id: "john-travolta",
         fullName: "John Travolta",
         imageSrc:
-          "https://expertphotography.b-cdn.net/wp-content/uploads/2022/03/Portrait-Photographers-Yousuf-Karsh-King.jpg",
-        chat: {
-          messages: [{ author: user, message: "Let's go out " }],
-        },
+          "https://media.allure.com/photos/5df93f4012b68a0008506f36/16:9/w_2560%2Cc_limit/john-travolta-lede.jpg",
       },
       {
-        fullName: "Mia Iovason",
+        id: "arnold-schvarzeneger",
+        fullName: "Arnold Schvarzeneger",
         imageSrc:
-          "https://expertphotography.b-cdn.net/wp-content/uploads/2022/03/Portrait-Photographers-Yousuf-Karsh-King.jpg",
+          "https://cdn.britannica.com/11/222411-050-D3D66895/American-politician-actor-athlete-Arnold-Schwarzenegger-2016.jpg",
       },
     ];
   }

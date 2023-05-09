@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { ChatHeader, ChatListItem, ChatSearch } from "../../components";
 import { User } from "../../models";
+import { Chat } from "../../models/chat";
 
 interface LeftSideProps {
   userClick: (user: User) => void;
   users: User[];
+  chats: Chat[];
 }
 
 export function LeftSide(props: LeftSideProps) {
@@ -25,14 +27,19 @@ export function LeftSide(props: LeftSideProps) {
         <ChatSearch onSearch={handleSearch} />
       </div>
       <div className="h-full overflow-auto flex flex-col bg-white">
-        {users.map((user, idx) => (
-          <ChatListItem
-            user={user}
-            latestMessage={user.chat?.messages?.[0].message}
-            onClick={() => props.userClick(user)}
-            key={idx}
-          />
-        ))}
+        {users.map((user, idx) => {
+          const chat = props.chats.find((chat) => chat.receiverId === user.id);
+          const lastMessage =
+            chat?.messages[chat?.messages.length - 1]?.message;
+          return (
+            <ChatListItem
+              user={user}
+              latestMessage={lastMessage || '"Say hi to your contact"'}
+              onClick={() => props.userClick(user)}
+              key={idx}
+            />
+          );
+        })}
       </div>
     </div>
   );
