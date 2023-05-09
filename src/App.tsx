@@ -24,7 +24,7 @@ function App() {
           <LeftSide chats={chats} users={users} userClick={handleUserClick} />
         </div>
         <div className="col-span-8">
-          <RightSide chat={chat} />
+          <RightSide senderId={currentUser.id} chat={chat} />
         </div>
       </div>
     </div>
