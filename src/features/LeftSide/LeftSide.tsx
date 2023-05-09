@@ -42,7 +42,7 @@ export function LeftSide(props: LeftSideProps) {
           return (
             <ChatListItem
               user={user}
-              latestMessage={lastMessage || '"Say hi to your contact"'}
+              latestMessage={lastMessage || "Say hi to your contact"}
               onClick={() => props.userClick(user)}
               onTakeIdentity={() => props.userTakeIdentityClick(user)}
               key={user.id}
