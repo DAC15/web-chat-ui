@@ -12,6 +12,6 @@ export class ChatsDataService {
   }
 
   public static getChatsBySenderId(senderId: string): Chat[] {
-    return this.getAllChats().filter((chat) => chat.senderId === senderId);
+    return this.getAllChats().filter((chat) => chat.authors.includes(senderId));
   }
 }

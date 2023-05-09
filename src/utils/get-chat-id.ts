@@ -1,5 +1,5 @@
 import { Chat } from "../models";
 
 export function getChatId(chat: Chat): string {
-  return `${chat.senderId}-${chat.receiverId}`;
+  return JSON.stringify(chat);
 }

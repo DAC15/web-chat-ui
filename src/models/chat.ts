@@ -1,6 +1,5 @@
 export interface Chat {
-  senderId: string;
-  receiverId: string;
+  authors: string[];
   messages: ChatMessage[];
 }
 
