@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { ChatHeader, ChatListItem, ChatSearch } from "../../components";
-import { User } from "../../models";
-import { Chat } from "../../models/chat";
+import { Chat, User } from "../../models";
 
 interface LeftSideProps {
   userClick: (user: User) => void;

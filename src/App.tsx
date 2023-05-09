@@ -2,13 +2,14 @@ import { useState } from "react";
 import { UsersDataService } from "./data-services";
 import { ChatsDataService } from "./data-services/chats.data-service";
 import { LeftSide, RightSide } from "./features";
-import { User } from "./models";
-import { Chat } from "./models/chat";
+import { Chat, User } from "./models";
+import { getChatId } from "./utils";
 
 function App() {
   const [currentUser, ...users] = UsersDataService.getUsers();
-  const chats = ChatsDataService.getChatsBySenderId(currentUser.id);
-
+  const [chats, setChats] = useState<Chat[]>(
+    ChatsDataService.getChatsBySenderId(currentUser.id)
+  );
   const [chat, setChat] = useState<Chat | undefined>(undefined);
 
   function handleUserClick(user: User): void {
@@ -23,14 +24,22 @@ function App() {
 
   function sendMessageInChat(message: string): void {
     if (chat) {
-      setChat({
+      const newChat = {
         ...chat,
         messages: [
           ...chat?.messages,
           { message, authorId: currentUser.id },
           { authorId: chat.receiverId, message: `${message} ❤️` },
         ],
-      });
+      };
+      const newChats = [
+        ...chats.filter((el) => getChatId(el) !== getChatId(newChat)),
+        newChat,
+      ];
+
+      setChat(newChat);
+      setChats(newChats);
+      ChatsDataService.saveChats(newChats);
     }
   }
 

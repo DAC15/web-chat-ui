@@ -1,5 +1,5 @@
 import { ChatWindow, WelcomeSection } from "../../components";
-import { Chat } from "../../models/chat";
+import { Chat } from "../../models";
 
 interface RightSideProps {
   chat?: Chat;

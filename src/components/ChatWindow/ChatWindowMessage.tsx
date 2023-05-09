@@ -1,4 +1,4 @@
-import { ChatMessage } from "../../models/chat";
+import { ChatMessage } from "../../models";
 
 interface ChatWindowMessageProps {
   message: ChatMessage;
