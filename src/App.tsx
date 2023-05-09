@@ -16,7 +16,16 @@ function App() {
   }
 
   function sendMessageInChat(message: string): void {
-    console.log("send message in this chat", message);
+    if (chat) {
+      setChat({
+        ...chat,
+        messages: [
+          ...chat?.messages,
+          { message, authorId: currentUser.id },
+          { authorId: chat.receiverId, message: `${message} ❤️` },
+        ],
+      });
+    }
   }
 
   return (

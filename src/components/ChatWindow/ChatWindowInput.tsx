@@ -13,10 +13,12 @@ export function ChatWindowInput(props: ChatWindowInputProps) {
         className="w-full h-[42px] rounded px-3 bg-white focus:outline-none"
         type="text"
         placeholder="Send your message here..."
+        value={message}
         onChange={(event) => setMessage(event.target.value)}
         onKeyDown={(event) => {
           if (event.code === "Enter") {
             props.onSubmit(message);
+            setMessage("");
           }
         }}
       />
