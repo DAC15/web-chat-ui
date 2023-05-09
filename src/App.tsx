@@ -56,8 +56,6 @@ function App() {
     }
   }
 
-  console.log("render with users", users);
-
   return (
     <div className="w-screen h-screen relative">
       <div className="bg-[#00A884] h-[127px] w-full"></div>
