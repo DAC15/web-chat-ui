@@ -103,10 +103,10 @@ export function WelcomeSection() {
             stroke="#316474"
           ></path>
         </svg>
-        <h1 className="text-3xl text-slate-800">WhatsApp Web</h1>
+        <h1 className="text-3xl text-slate-800">WhaChat Web</h1>
         <p className="text-base text-slate-600 max-w-[500px]">
           Send and receive messages without keeping your phone online.Use
-          WhatsApp on up to 4 linked devices and 1 phone at the same time.
+          WhaChat on up to 4 linked devices and 1 phone at the same time.
         </p>
       </div>
 
